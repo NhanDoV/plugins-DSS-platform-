@@ -17,18 +17,14 @@ recipe_config = get_recipe_config()
 will_be_drop_or_not = recipe_config["will be drop or not"]
 n_components = recipe_config["explanied_ratio"]
 cols = recipe_config["columns_to_keep"]
-print(100*"=")
 col_keep = [cols[k] for k in range(len(cols))]
-print(col_keep) #
-print(100*"=")
-
 
 # Read recipe inputs
 input_dataset_name = get_input_names_for_role("input_dataset")[0]
 input_dataset = dataiku.Dataset(input_dataset_name)
 df = input_dataset.get_dataframe()
+df_col_keep = df[col_keep]
 df = df.drop(columns = col_keep)
-df_col_keep = df[[col_keep]]
 
 # -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
 df = df._get_numeric_data()
