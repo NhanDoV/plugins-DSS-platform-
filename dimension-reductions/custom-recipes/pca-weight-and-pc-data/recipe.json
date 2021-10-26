@@ -1,0 +1,79 @@
+// This file is the descriptor for the Custom code recipe pca-weight-and-pc-data
+{
+    // Meta data for display purposes
+    "meta": {
+        // label: name of the recipe as displayed, should be short
+        "label": "Pca weight and pc data",
+        // description: longer string to help end users understand what this recipe does
+        "description": "Dimension reduction",
+        // icon: must be one of the FontAwesome 3.2.1 icons, complete list here at https://fontawesome.com/v3.2.1/icons/
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+    "selectableFromDataset": "input_dataset",
+    
+    "inputRoles": [
+        {
+            "name": "input_dataset",
+            "label": "input dataset",
+            "description": "your input dataset must be contains the numeric values",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "PCA_data",
+            "label": "PCA_dataset",
+            "description": "new dataset after transforming with PCA",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        },
+        {
+            "name": "PC_weights",
+            "label": "principal components weight",
+            "description": "principal components weights",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+        // ...
+    ],
+
+    "params": [
+         {
+            "name": "explanied_ratio",
+            "label": "explanied_ratio to kept the info from whole dataset",
+            "type": "DOUBLE",
+            "defaultValue" : 0.95,
+            "description": "Must be a float in 0 and 1",
+            "columnRole": "input_dataset",
+            "mandatory": true
+         },
+        
+        {
+            "name": "will be drop or not",
+            "label" : "whether to drop",
+            "type" : "BOOLEAN",
+            "defaultValue" : False,
+            "description": "determine whether to drop or not, if False, fill the column_to_drop field as a space.",
+            "mandatory": true
+        },
+        
+        {
+            "name": "columns_to_keep",
+            "label": "columns_to_keep",
+            "type": "COLUMNS",
+            "defaultValue": "",
+            "discription": "select the input_columns (from the input_dataset) that you want to drop",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        }
+    ],
+    "resourceKeys": []
+
+}
