@@ -28,11 +28,7 @@ input_dataset_name = get_input_names_for_role("input_dataset")[0]
 input_dataset = dataiku.Dataset(input_dataset_name)
 df = input_dataset.get_dataframe()
 df = df.drop(columns = col_keep)
-
-if will_be_drop_or_not == True:
-    df_col_keep = df[[col_keep]]
-else:
-    df_col_keep = pd.DataFrame({})
+df_col_keep = df[[col_keep]]
 
 # -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
 df = df._get_numeric_data()
