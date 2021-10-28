@@ -47,20 +47,66 @@
     "params": [
          {
             "name": "explanied_ratio",
-            "label": "explanied_ratio to kept the info from whole dataset",
+            "label": "explanied ratio",
             "type": "DOUBLE",
             "defaultValue" : 0.95,
-            "description": "Must be a float in 0 and 1",
+            "description": "explanied_ratio to kept the info from whole dataset, the ratio that the amount of variance that needs to be explained is greater than. Must be a float in 0 and 1",
             "columnRole": "input_dataset",
             "mandatory": true
          },
         
         {
-            "name": "will be drop or not",
-            "label" : "whether to drop",
+            "name": "random_state",
+            "label": "random_state",
+            "type": "INT",
+            "defaultValue": 0,
+            "description": "Pass an int for reproducible results across multiple function calls. Refer\
+                            [pca](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)",
+            "mandatory": true
+        },
+        
+        {
+            "name": "svd_solver",
+            "label": "svd_solver",
+            "description": "How to aplly the SVD on the PCA",
+            "type": "MULTISELECT",
+            "defaultValue": ["auto"],
+            "selectChoices": [
+                {
+                    "value":"auto",
+                    "label":"auto"
+                },
+                {
+                    "value":"randomized ",
+                    "label":"randomized "
+                },
+                {
+                    "value":"arpack",
+                    "label": "arpack"
+                },
+                {
+                    "value":"full",
+                    "label": "full"
+                }
+            ]
+        },
+        
+        {
+            "name": "tol",
+            "label": "tolerance",
+            "type": "DOUBLE",
+            "description": "Tolerance for singular values computed by svd_solver == ‘arpack’. Must be of range [0.0, infinity)",
+            "mandatory": true
+        },       
+        
+        {
+            "name": "whiten",
+            "label" : "whitening",
             "type" : "BOOLEAN",
             "defaultValue" : False,
-            "description": "determine whether to drop or not, if False, fill the column_to_drop field as a space.",
+            "description": "Whitening will remove some information from the transformed signal (the relative variance scales\
+                            of the components) but can sometime improve the predictive accuracy of the downstream estimators by \
+                            making their data respect some hard-wired assumptions.",
             "mandatory": true
         },
         
