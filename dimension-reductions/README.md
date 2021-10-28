@@ -14,7 +14,7 @@ after set the name of the output datasets, you will have
 # Input parameters
 - Look at the image below,
 <p align="center">
-<img width="120%" src="plugins_params.jpg"
+<img width="90%" src="plugins_params.jpg"
 </p>
  
 - Here, I set the `input_params` :
