@@ -14,7 +14,7 @@ after set the name of the output datasets, you will have
 # Input parameters
 - Look at the image below,
 <p align="center">
-<img width="90%" src="plugins_params.jpg"
+<img width="80%" src="https://github.com/Nhan121/plugins-DSS-platform-/blob/67cc38b94154c76aa1663a2e7e011514fc46d189/dimension-reductions/plugins_params.jpg"
 </p>
  
 - Here, I set the `input_params` :
