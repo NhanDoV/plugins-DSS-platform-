@@ -33,6 +33,7 @@
             "required": false,
             "acceptsDataset": true
         },
+        
         {
             "name": "PC_weights",
             "label": "principal components weight",
@@ -41,8 +42,7 @@
             "required": false,
             "acceptsDataset": true
         }
-        // ...
-    ],
+      ],
 
     "params": [
          {
@@ -50,7 +50,8 @@
             "label": "explanied ratio",
             "type": "DOUBLE",
             "defaultValue" : 0.95,
-            "description": "explanied_ratio to kept the info from whole dataset, the ratio that the amount of variance that needs to be explained is greater than. Must be a float in 0 and 1",
+            "description": "explanied_ratio to kept the info from whole dataset, the ratio that the amount of variance that needs to be explained is greater than. \
+                            Must be a float in 0 and 1",
             "columnRole": "input_dataset",
             "mandatory": true
          },
@@ -121,5 +122,4 @@
         }
     ],
     "resourceKeys": []
-
 }
