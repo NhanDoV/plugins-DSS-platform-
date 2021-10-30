@@ -1,0 +1,186 @@
+// This file is the descriptor for the Custom code recipe prop-test-2samples
+{
+    // Meta data for display purposes
+    "meta": {
+        
+        "label": "Distribution testing",
+        
+        "description": "Distribution testing: Kolmogorov-Smirnov test for goodness of fit from a given sample",
+        
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+    "paramsPythonSetup": "distribution_choices.py",
+    "selectableFromDataset": "input_dataset",
+    
+    "inputRoles": [
+        {
+            "name": "input_dataset",
+            "label": "input_dataset",
+            "description": "your input ",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "main_output",
+            "label": "main output displayed name",
+            "description": "what main output means",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+
+    "params": [
+        
+        {
+            "name": "distribution_name",
+            "label": "type of distribution",
+            "type": "SELECT",
+            "discription": "name of some popular distribution in statistical testing.",
+            "selectChoices": [
+                
+                { "value": "norm", "label": "normal" },                
+                { "value": "poisson", "label": "poisson"},                
+                { "value": "t", "label": "Student"},                
+                { "value": "binom", "label": "Binomial"},
+                { "value": "f", 'label': "Fisher"}
+            ],
+            "mandatory": true
+        },       
+        
+        {
+            "name": "col_to_test",
+            "label": "col_to_test",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "select the input_column that you want to implement the distribution_testing.",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },
+                        
+        {
+            "name": "alpha_min",
+            "label": "minimum of significance level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.01,
+            "description": "the minimum of sign_level, must be in (0, 1) and less then alpha_max",
+            "mandatory": true
+        },
+        
+        {
+            "name": "alpha_max",
+            "label": "maximum of significance level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.1,
+            "description": "the maximum of sign_level",
+            "mandatory": true
+        },
+        
+        {
+            "name": "Numb_steps",
+            "label": "step_size between alpha_min and alpha_max",
+            "type": "INT",
+            "defaultValue": 9,
+            "description": "the number of stepsize in the conf_levels",
+            "mandatory": true
+        },
+                
+        {
+            "name" : "alt_hypothesis",
+            "label": "alternative hypothesis",
+            "type": "SELECT",
+            "defaultValue": "equal",
+            "description": "we have 3 type of this: equal (or two-sided), less and greater",
+            "selectChoices": [
+                                
+                { "value": "two-sided", "label": "two-sided"},
+                
+                { "value": "less", "label": "less"},
+                
+                { "value": "greater", "label": "greater" }
+            ],
+            "mandatory": true
+        },
+           
+        // * Normal distribution //
+        {
+          "name": "norm_muy",
+          "label": "normal_muy",
+          "type": "DOUBLE",
+          "defaultValue": 0,
+          "visibilityCondition" : "model.distribution_name == 'norm'"
+        },
+        
+        {
+          "name": "norm_sigma^2",
+          "label": "normal_sigma^2",
+          "type": "DOUBLE",
+          "defaultValue": 1.,
+          "visibilityCondition" : "model.distribution_name == 'norm'"
+        },        
+        
+        // * Poisson distribution //        
+        {
+          "name": "pois_muy",
+          "label": "pois_muy",
+          "type": "DOUBLE",
+          "visibilityCondition" : "model.distribution_name == 'poisson'"
+        },
+        
+        {
+          "name": "pois_loc",
+          "label": "pois_loc",
+          "type": "DOUBLE",
+          "visibilityCondition" : "model.distribution_name == 'poisson'"
+        },
+        
+        // * Binomial distribution //
+        {
+            "name": "Binom_size",
+            "label": "Binom_size",
+            "type": "INT",
+            "visibilityCondition" : "model.distribution_name == 'binom'"
+        },
+        
+        {
+            "name": "Binom_prob",
+            "label": "Binom_prob",
+            "type": "INT",
+            "visibilityCondition" : "model.distribution_name == 'binom'"
+        },
+                
+        // * Student distribution //
+        {
+          "name": "St_deg",
+          "label": "St_deg",
+          "type": "DOUBLE",
+          "visibilityCondition" : "model.distribution_name == 't'",
+          "description": "degree of freedom"
+        },
+        
+        // * Fisher distribution : denominator and numerator at freedom_of_degrees//
+        {
+          "name": "F_deg_denom",
+          "label": "F_deg_denom",
+          "type": "DOUBLE",
+          "visibilityCondition" : "model.distribution_name == 'f'",
+          "description": "degree of freedom"
+        },
+        
+        {
+          "name": "F_deg_numer",
+          "label": "F_deg_numer",
+          "type": "DOUBLE",
+          "visibilityCondition" : "model.distribution_name == 'f'",
+          "description": "degree of freedom"
+        }                
+        
+    ],
+    "resourceKeys": []
+}
