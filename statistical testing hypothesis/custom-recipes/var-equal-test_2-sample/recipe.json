@@ -1,0 +1,126 @@
+// This file is the descriptor for the Custom code recipe prop-test-2samples
+{
+    // Meta data for display purposes
+    "meta": {
+        
+        "label": "variance test 2samples",
+        
+        "description": "This recipe is used to test the variances of 2 samples",
+        
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+    "selectableFromDataset": "sample_A",
+    "selectableFromDataset": "sample_B",
+    
+    "inputRoles": [
+        {
+            "name": "sample_A",
+            "label": "sample_A",
+            "description": "what input A means",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        },
+        {
+            "name": "sample_B",
+            "label": "sample_B",
+            "description": "what input B means",
+            "arity": "NARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "main_output",
+            "label": "main output displayed name",
+            "description": "what main output means",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+
+    "params": [
+        {
+            "name": "col_sample_A",
+            "label": "col_sample_A",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "select the input_column (from the sample_A) that you want to implement the prop_test",
+            "columnRole": "sample_A",
+            "mandatory": true
+        },
+        
+        {
+            "name": "col_sample_B",
+            "label": "col_sample_B",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "select the input_column (from the sample_B) that you want to implement the prop_test",
+            "columnRole": "sample_B",
+            "mandatory": true
+        },        
+                
+        {
+            "name": "alpha_min",
+            "label": "minimum of confidence level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.01,
+            "description": "the minimum of conf_level, must be in (0, 1) and less then alpha_max",
+            "mandatory": true
+        },
+        
+        {
+            "name": "alpha_max",
+            "label": "maximum of confidence level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.1,
+            "description": "the maximum of conf_level",
+            "mandatory": true
+        },
+        
+        {
+            "name": "Numb_steps",
+            "label": "step_size between alpha_min and alpha_max",
+            "type": "INT",
+            "defaultValue": 9,
+            "description": "the number of stepsize in the conf_levels",
+            "mandatory": true
+        },
+                
+        {
+            "name" : "alt_hypothesis",
+            "label": "alternative hypothesis",
+            "type": "MULTISELECT",
+            "defaultValue": "equal",
+            "description": "we have 3 type of this: equal (or two.side), less and greater",
+            "selectChoices": [
+                {
+                    "value": "equal",
+                    "label": "equal"
+                },
+                
+                {
+                    "value": "two.side",
+                    "label": "two.side"
+                },
+                
+                {
+                    "value": "less",
+                    "label": "less"
+                },
+                
+                {
+                    "value": "greater",
+                    "label": "greater"
+                }
+            ],
+            "mandatory": true
+        }
+    ],
+    "resourceKeys": []
+}

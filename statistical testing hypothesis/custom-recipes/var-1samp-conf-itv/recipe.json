@@ -1,0 +1,121 @@
+{
+    // Meta data for display purposes
+    "meta": {
+     
+            "label": "var_1samp_conf-itv",
+
+            "description": "evaluate the confidence interval for the statistical-estimators such as mean, variance, median, ",
+
+            "icon": "icon-puzzle-piece"
+        },
+    "kind": "PYTHON",
+    "selectableFromDataset": "input_dataset",
+
+    // Your input data/ folder
+    
+    "inputRoles": [
+        {
+            "name": "input_dataset",
+            "label": "input A displayed name",
+            "description": "what input A means",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    // your output data / folder
+    
+    "outputRoles": [
+        {
+            "name": "main_output",
+            "label": "main output displayed name",
+            "description": "what main output means",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+
+    // your input params / columns or their values
+    
+    "params": [
+        
+        {
+            "name": "alpha_min",
+            "label": "minimum of confidence level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.01,
+            "description": "the minimum of conf_level, must be in (0, 1) and less then alpha_max",
+            "mandatory": true
+        },
+        
+        {
+            "name": "alpha_max",
+            "label": "maximum of confidence level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.1,
+            "description": "the maximum of conf_level",
+            "mandatory": true
+        },
+        
+        {
+            "name": "Numb_steps",
+            "label": "step_size between alpha_min and alpha_max",
+            "type": "INT",
+            "defaultValue": 9,
+            "description": "the number of stepsize in the conf_levels",
+            "mandatory": true
+        },
+        
+        {
+            "name" : "sigma0",
+            "label": "sigma0",
+            "type": "DOUBLE",
+            "defaultValue": 1,
+            "description": "sigma0: alternative in your variance-testing-hypothesis",
+            "mandatory": true
+        },
+        
+        {
+            "name" : "alt_hypothesis",
+            "label": "alternative hypothesis",
+            "type": "MULTISELECT",
+            "defaultValue": "equal",
+            "description": "we have 3 type of this: equal (or two.side), less and greater",
+            "selectChoices": [
+                {
+                    "value": "equal",
+                    "label": "equal"
+                },
+                
+                {
+                    "value": "two.side",
+                    "label": "two.side"
+                },
+                
+                {
+                    "value": "less",
+                    "label": "less"
+                },
+                
+                {
+                    "value": "greater",
+                    "label": "greater"
+                }
+            ],
+            "mandatory": true
+        },
+        
+        {
+            "name": "column_to_test",
+            "label": "column to test",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "select the input_column (from the input_dataset) that you want to implement the _test",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        }
+    ],
+    "resourceKeys": []
+}

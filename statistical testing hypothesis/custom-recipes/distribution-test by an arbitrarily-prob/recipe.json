@@ -1,0 +1,88 @@
+// This file is the descriptor for the Custom code recipe prop-test-2samples
+{
+    // Meta data for display purposes
+    "meta": {
+        
+        "label": "Distribution testing on the arbitrarily probabilities",
+        
+        "description": "Distribution testing on unknown distribution from a given empirical frequencies and theorictic probabilities.",
+        
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+    "paramsPythonSetup": "distribution_choices.py",
+    "selectableFromDataset": "input_dataset",
+    
+    "inputRoles": [
+        {
+            "name": "input_dataset",
+            "label": "input_dataset",
+            "description": "your input dataset",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "main_output",
+            "label": "main output displayed name",
+            "description": "what main output means",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+    "params": [
+        
+        {
+            "name": "emp_freq_col",
+            "label": "emp_freq_col",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "select the input_column that display the empirical_frequencies.",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },
+
+        {
+            "name": "theo_prob_col",
+            "label": "theo_prob_col",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "select the input_column that you want to display the theorictic probabilities.",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },        
+        
+        {
+            "name": "alpha_min",
+            "label": "minimum of significance level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.01,
+            "description": "the minimum of sign_level, must be in (0, 1) and less then alpha_max",
+            "mandatory": true
+        },
+        
+        {
+            "name": "alpha_max",
+            "label": "maximum of significance level input",
+            "type": "DOUBLE",
+            "defaultValue": 0.1,
+            "description": "the maximum of sign_level",
+            "mandatory": true
+        },
+        
+        {
+            "name": "Numb_steps",
+            "label": "step_size between alpha_min and alpha_max",
+            "type": "INT",
+            "defaultValue": 9,
+            "description": "the number of stepsize in the conf_levels",
+            "mandatory": true
+        }                
+    ],
+    "resourceKeys": []
+}    
