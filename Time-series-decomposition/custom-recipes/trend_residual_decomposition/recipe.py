@@ -36,14 +36,15 @@ seasn = result.seasonal.values
 trend = result.trend.values
 
 # Compute recipe outputs from inputs
-this_df = pd.DataFrame({'date': dates.ravel(),
+this_df = pd.DataFrame({date_col: dates.ravel(),
                         'residual': resid.ravel(),
                         'seasonality': seasn.ravel(),
                         'trend':trend.ravel()
                        })
-this_df['date'] = pd.to_datetime(this_df['date'])
-that_df = result.observed.reset_index().drop(columns="Date")
+this_df[date_col] = pd.to_datetime(this_df[date_col])
+that_df = result.observed.reset_index().drop(columns = date_col)
 this_df = pd.concat([this_df, that_df], axis = 1)
+this_df = this_df[[date_col, target_col, "residual", "trend", "seasonality"]]
 
 # -------------------------------------------------------------------------------- NOTEBOOK-CELL: CODE
 # Write recipe outputs
