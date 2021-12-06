@@ -47,13 +47,21 @@
         },
         
         {
+            "name": "periods",
+            "label": "periods",
+            "type": "INT",
+            "defaultValue": 7,
+            "description": "Frequency of the series. Must be used if x is not a pandas object",
+            "mandatory": true
+        },
+        
+        {
             "name": "frequency",
             "label": "frequency",
             "description": "Frequency of your historical data.",
             "type": "SELECT",
             "defaultValue": ["auto"],
             "selectChoices": [
-              
                 {
                     "value":"D",
                     "label":"day"
@@ -69,11 +77,6 @@
                     "label": "week"
                 },
                 
-                {
-                    "value":"W",
-                    "label": "week"
-                },
-              
                 {
                     "value":"Q",
                     "label": "quarter"
