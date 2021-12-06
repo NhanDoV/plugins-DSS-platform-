@@ -1,0 +1,101 @@
+{
+    // Meta data for display purposes
+    "meta": {
+        
+        "label": "Basic decomposition",
+        
+        "description": "create the dataframe of trend-seasonality and residual",
+        
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+        "selectableFromDataset": "input_dataset",
+    
+    "inputRoles": [
+        {
+            "name": "input_dataset",
+            "label": "input dataset",
+            "description": "your input dataset must be contains the numeric values",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "main_output",
+            "label": "main_output",
+            "description": "new dataset using decomposite seasonality and trend",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+
+    "params": [
+        
+        {
+            "name": "date_col",
+            "label": "date_col",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "input_columns (from the input_dataset) that you want to set as datetime. Must be a parsed date",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },
+        
+        {
+            "name": "frequency",
+            "label": "frequency",
+            "description": "Frequency of your historical data.",
+            "type": "SELECT",
+            "defaultValue": ["auto"],
+            "selectChoices": [
+              
+                {
+                    "value":"D",
+                    "label":"day"
+                },
+                
+                {
+                    "value":"M",
+                    "label":"month"
+                },
+                
+                {
+                    "value":"W",
+                    "label": "week"
+                },
+                
+                {
+                    "value":"W",
+                    "label": "week"
+                },
+              
+                {
+                    "value":"Q",
+                    "label": "quarter"
+                },
+                
+                {
+                    "value":"Y",
+                    "label": "year"
+                }
+            ]
+        },
+        
+        {
+            "name": "target_col",
+            "label": "target_col",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "select the input_columns (from the input_dataset) that you want to ",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        }
+    ],
+    "resourceKeys": []
+
+}
