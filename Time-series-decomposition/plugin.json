@@ -1,0 +1,14 @@
+{
+    "id": "time-series-decomp",
+    "version": "0.0.1",
+    "meta": {
+        
+        "label": "Time-series-decomposition",
+        "description": "",
+        "author": "DataIku (Do Van Nhan)",        
+        "icon": "icon-text-height",        
+        "tags": ["Machine Learning", "timeseries", "trend", "seasonality", "decomposition"]        
+        "url": "",
+        "licenseInfo": "Apache Software License"
+    }
+}
