@@ -2,7 +2,7 @@
 
     "meta": {
 
-        "label": "Nlp countvect",
+        "label": "view_count_vect_data",
 
         "description": "create a sample of text with respect to the count-vectorizer",
 
