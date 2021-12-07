@@ -1,8 +1,9 @@
 {
     "python" : [
-        {"name":"datefinder", "version":"==0.7.1"},
+        {"name": "datefinder", "version": "==0.7.1"},
         {"name": "emoji", "version": "==1.6.1"},
         {"name": "wordcloud", "version": "==1.8.1"},
-        {"name": "requests", "version": "==2.22.0"}
+        {"name": "requests", "version": "==2.22.0"},
+        {"name": "gensim", "version": ">=3.1.0"}
     ]
 }
