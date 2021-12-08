@@ -1,5 +1,4 @@
 {
-
     "meta": {
 
         "label": "Top ngrams preview",
@@ -32,6 +31,7 @@
             "required": false,
             "acceptsDataset": true
         },
+        
         {
             "name": "positive case",
             "label": "positive case",
@@ -40,7 +40,6 @@
             "required": false,
             "acceptsDataset": true
         }
-        // ...
     ],
 
     "params": [
@@ -52,6 +51,25 @@
             "defaultValue": "",
             "discription": "input_columns (from the input_dataset) that you want to analysis, must be as string / text type.",
             "columnRole": "input_dataset",
+            "mandatory": true
+        },
+        
+        {
+            "name": "target_col",
+            "label": "target_col",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "target_column (from the input_dataset) that indicate your text_col is spam / fake or sth like this.",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },
+        
+        {
+            "name": "pst_meant",
+            "label": "pst_meant",
+            "type": "STRING",
+            "defaultValue": "spam",
+            "discription": "the positive_case in your analyis: spam or fake-news, for example 1 = spam, 0 = no-.",
             "mandatory": true
         },
         
@@ -92,5 +110,7 @@
             "defaultValue": 100
         }     
     ],
+    
     "resourceKeys": []
+    
 }
