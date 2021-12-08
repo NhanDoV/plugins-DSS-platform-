@@ -1,1 +1,96 @@
+{
 
+    "meta": {
+
+        "label": "Top ngrams preview",
+
+        "description": "View the frequency of the top most occurence-ngrams in dataset by positive and negative case",
+        
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+    "selectableFromDataset": "input_dataset",
+    
+    "inputRoles": [
+        {
+            "name": "input_dataset",
+            "label": "input dataset",
+            "description": "your input dataset must be contains the numeric values",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "negative_case",
+            "label": "negative_case",
+            "description": "N-grams's group of spam or fake-news",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        },
+        {
+            "name": "positive case",
+            "label": "positive case",
+            "description": "N-grams's group of no-spam / real news",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+        // ...
+    ],
+
+    "params": [
+        
+        {
+            "name": "text_col",
+            "label": "text_col",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "discription": "input_columns (from the input_dataset) that you want to analysis, must be as string / text type.",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },
+        
+        {
+            "name": "is_cleaned",
+            "label": "is_cleaned",
+            "description": "Cleaned your text or not? Remove stopwords, number, etc.",
+            "type": "BOOLEAN",
+            "defaultValue": True
+        },  
+        
+        {
+            "name": "ngrams_type",
+            "label": "ngrams_type",
+            "description": "The type of N-grams that you want to analysis. Must be in 1, 2, 3",
+            "type": "SELECT",
+            "defaultValue": 1,
+            "selectChoices": [
+                {
+                    "value": 1, "label": "unigram"
+                },
+                
+                {
+                    "value": 2, "label": "bigrams"
+                },
+                
+                {
+                    "value": 3, "label": "trigrams"
+                }
+            ]
+        },
+        
+        {
+            "name": "top_words",
+            "label": "top_words",
+            "description": "top_words_to_show.",
+            "type": "INT",
+            "defaultValue": 100
+        }     
+    ],
+    "resourceKeys": []
+}
