@@ -1,0 +1,68 @@
+{
+
+    "meta": {
+
+        "label": "Pca term frequency",
+
+        "description": "Create the term frequency",
+
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+    "selectableFromDataset": "input_dataset",
+    "inputRoles": [
+    {
+            "name": "input_dataset",
+            "label": "input dataset",
+            "description": "your input dataset must be contains the numeric values",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "main_output",
+            "label": "main_output",
+            "description": "new dataset using decomposite seasonality and trend",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+
+    "params": [
+        
+        {
+            "name": "text_col",
+            "label": "text_col",
+            "discription": "input_columns (from the input_dataset) that you want to analysis, must be as string / text type.",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },
+        
+        {
+            "name": "target_col",
+            "label": "target_col",
+            "discription": "input_columns (from the input_dataset) that you want to compare, must be as category type (spam / fake, etc).",
+            "type": "COLUMN",
+            "defaultValue": "",
+            "columnRole": "input_dataset",
+            "mandatory": true
+        },  
+        
+        {
+            "name": "n_pc",
+            "label": "n_pc",
+            "description": "Number of principal_component that you want to keep.",
+            "type": "INT",
+            "defaultValue": 10
+        }     
+    ],
+  
+    "resourceKeys": []
+}
