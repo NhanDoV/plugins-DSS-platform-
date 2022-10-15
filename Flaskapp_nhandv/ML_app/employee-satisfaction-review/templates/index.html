@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" />
+      <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css')}}" /> -->
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        background-color: rgba(150, 212, 212, 0.4);
+        color:rgb(10, 25, 230)
+      }
+      .centered {
+        position: relative;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        color: blueviolet;
+        background-color: radial-gradient(to_bottom,#91d64d 0%, #33ccff 99%);
+      }
+
+      .header {
+        color: black;
+        background-color: radial-gradient(to_bottom,#91d64d 0%, #33ccff 99%);
+      }
+
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: red;
+        opacity: 1; /* Firefox */
+      }
+
+      .button {
+          background-color:  #008CBA; /* Green-blue */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+      }
+
+      p {
+        color: #111;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        line-height: 24px;
+        margin: 0 0 24px;
+        text-justify: inter-word;
+      }
+
+      h1 {
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        line-height: 1;
+        text-align: center;
+      }
+      .column {
+        float: center;
+        width: 32%;
+      }
+
+      div{
+        background: radial-gradient(to_bottom,#4ab361 0%, #91d64d 99%);   
+      }
+
+      .notice-succes{
+        background-color: linear-gradient(#72c41f, #5c9e19);
+        border: 2px solid #467813;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding: 15px 20px;
+      }
+
+      .demo {
+        color: #111;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 22px;
+        line-height: 24px;
+        margin: 0 0 24px;
+        text-justify: inter-word;
+        align-self: center;
+        background-color: linear-gradient(#72c41f, #5c9e19);
+      }
+
+      .form-div {
+        display: flex;
+        width: 800px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: radial-gradient(to_bottom,#91d64d 0%, #33ccff 99%);
+        background: #67b11c;
+        background-color: linear-gradient(#72c41f, #5c9e19);
+      }
+    </style>
+  </head>
+  <body class="notice-success" style="background-image: linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197))">
+    <div class="container mt-5">
+      <div class="centered">
+        <div class="text-center text-white">
+          <title>sentiment analysis app</title>
+        </div>
+        <h1 class="header" style="color: rgb(62, 29, 155);"> 
+          <div class="row" style="background-image: linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197));">
+            <div class="column" style = "float:left"> 
+              <img src="static/ftown3.png" style="width:99%; height: 100%; opacity: 0.8;"> 
+            </div>
+            <div class="column" style = "float: center"> 
+              <img src="static/fpt.png" style="width:97%; height: 100%; opacity: 0.6;"> 
+            </div>
+            <div class="column" style = "float: right"> 
+              <img src="static/emp_satis.png" style="width:99%; height: 100%; opacity: 0.3"> 
+            </div>
+          </div>
+          <br> Employee Satisfaction (FPT) App
+        </h1>
+        <h4 class="header" style="color: rgba(255, 1, 255, 1)"> AVI.FLY.Hackathon team</h4>
+        <h5 class="header"> version 1 - Authorized by Mr.Nhan </h5>
+        <p class="desc" style="color:rgb(37, 11, 184)">
+          Bài toán dựa trên việc dùng các review / comment của nhân viên (đã và đang) làm tại FSOFT trên các khía cạnh và các mức ratings, Bao gồm 15 hạng mục
+        </p>
+
+        <div style="text-align: left; font-size: 9pt; color: #111; font-family: 'consolas', sans-serif">
+          <li> 01. BUL: Đánh giá về công việc, ứng xử, trách nhiệm của các BUL (business unit leader)</li>
+          <li> 02. PM: Đánh giá công việc, ứng xử và trách nhiệm của PM </li>
+          <li> 03. HR: Đánh giá công việc, giao tiếp - ứng xử và trách nhiệm </li>
+          <li> 04. lead: Đánh giá công việc chuyên môn, ứng xử và trách nhiệm</li>
+          <li> 05. IT: Đánh giá công việc, ứng xử, trách nhiệm. Bên cạnh đó là các vấn đề về hạ tầng mạng, thông tin và thủ tục xử lý </li>
+          <li> 06. đồng nghiệp: đồng nghiệp có hỗ trợ / xích mích nhau trong công việc? </li>
+          <li> 07. lương thưởng: các vấn đề về tiền lương, và các khoản thưởng tết và lương tháng 13 </li>
+          <li> 08. cơ sở vật chất: không gian, cơ sở vật chất hạ tầng, máy móc trang thiết bị </li>
+          <li> 09. tăng ca: các chính sách hỗ trợ khi OT hợp lý chưa, hoặc các vấn đề phát sinh do OT </li>
+          <li> 10. nghỉ phép: về các kỳ nghỉ phép, đơn xin nghỉ mát, số ngày phép</li>
+          <li> 11. thôi việc: lý do thôi việc / không hài lòng điểm nào </li>
+          <li> 12. bảo hiểm: các đãi ngộ từ BHXH, BHYT và các nhân viên phụ trách BH ở cty </li>
+          <li> 13. các hỗ trợ khác: tiền xăng cộ, xe đưa rước, mua nhà, mua xe, hỗ trợ cưới sinh, bệnh tật, etc. </li>
+          <li> 14. công việc: cảm nhận về các tasks được giao, học hỏi kiến thức mới từ dự án? </li>
+          <li> 15. đào tạo: sự học hỏi từ các mentor + các khóa học, cert/ chứng chỉ, chương trình đào tạo lẫn người hướng dẫn của bạn</li>
+          <br>
+        </div>
+
+        <form method="POST" onSubmit="return validate();" class="form">                          
+          <div class="form-div">
+            <input type="text" name="text" class="form-control mr-2" placeholder ="  Input your review here. " />
+            <button type="submit" class="button" onclick="this.form.submit();">
+              Submit
+            </button>
+          </div>
+        </form>
+        <br />
+        <br />        
+      </div>
+
+      <p id="demo" >  
+        <div class="centered">
+            <h4 style="color: rgb(10, 25, 230);border: 10px black solid linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197)); background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(238, 168, 238, 0.8));"> Your input was: {{ your_inp }} </h4>
+            <h5> Rating results </h5>
+          <table style="color: cyan;">
+            {% for table in tables %}
+              {{ titles [loop.index]}}
+              {{ table | safe }}
+            {% endfor %}
+          </table>
+        </div>
+      </p>
+    </div>
+
+    <div style="border: 10px solid linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197)); background-image: linear-gradient(to left, rgba(0,0,0,0), rgba(255,128,128,1));">
+      <div class="column" style = "float:left"> NhanDV6 </div>  
+      <div class="column" style="float:right"> today is {{today}} </div> 
+    </div>
+  </body>
+</html>
