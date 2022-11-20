@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<style>
+    
+    table, th, td {
+        border:1px solid black;
+        border-style: dotted;
+        text-align: center;
+    }
+
+    .slidecontainer {
+    width: 100%;
+    }
+
+    .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    }
+
+    .slider:hover {
+    opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+    }
+    </style> 
+<head>
+    <title> index </title>
+</head>
+
+<body style="background-image: linear-gradient(to right, rgba(0,0,0,0.1), rgba(12,21,121,0.6));"> 
+    <p>
+
+    <h1 style="text-align: center; color: rgba(29, 97, 185, 0.801);"> Image pre-processing </h1>
+    <h2 style="text-align: center; color:rgba(7, 75, 7, 0.801)"> Authorized: Do Van Nhan <br> </h2>
+    
+<form method="POST" enctype="multipart/form-data" style="text-align: center;">    
+    <div>
+        Please upload your image here (accepted file: JPG, PNG)
+        <input type="file" name="file">
+    </div>
+    <br>
+    <div>
+        Bluring or debluring? 
+        <select name="transformed_type" id="transformed_type">
+            <option value="bluring"> bluring </option>
+            <option value="debluring"> debluring </option>
+            <option value="denoising"> denoising </option>
+        </select>
+    </div>
+    <br>
+        <table style="width:100%">
+            <tr>
+                <th> Set params for bluring </th>
+                <th> For debluring </th>
+                <th> For denoising </th>
+            </tr>
+
+            <tr>
+                <td>
+                    <div>
+                        If you want to bluring, please select the blur_type:
+                        <select name="blur_type" id="blur_type">
+                            <option value="2D_filtering"> 2D_filtering </option>
+                            <option value="Gaussian"> Gaussian </option>
+                            <option value="Median"> Median </option>
+                            <option value="Bilateral"> Bilateral </option>
+                        </select>
+                
+                    <p> Select the kernel_size: <input type="range" name="ksize" min="1" step="2" max="100" value="5" oninput="num1.value = this.value"> <output id="num1">5 </output> </p> 
+                    <p> Select the diameter: <input type="range" name="diam" min="1" step="2" max="100" value="5" oninput="num2.value = this.value"> <output id="num2">5 </output> </p>
+                    <p> Select the sigma_color: <input type="range" name="sigma_color" min="1" step="2" max="100" value="5" oninput="num3.value = this.value"> <output id="num3">5 </output> </p>
+                    <p> Select the sigma_space: <input type="range" name="sigma_space" min="1" step="2" max="100" value="5" oninput="num4.value = this.value"> <output id="num4">5 </output> </p> 
+                </td>                
+                <td> 
+                    <p> Select the epsilon: <input type="range" name="eps" min="0.001" step="0.002" max="1" value="0.001" oninput="num5.value = this.value"> <output id="num5">0.001 </output> </p>
+                    <p> Select the K_wind: <input type="range" name="Kw" min="0.001" step="0.002" max="1" value="0.001" oninput="num6.value = this.value"> <output id="num6">0.001 </output> </p> 
+                </td> 
+                <td>
+                    <p> Select the pix_weight: <input type="range" name="P3" min="8" step="0.1" max="100" value="8.0" oninput="num7.value = this.value"> <output id="num7">8.0 </output> </p>        
+                    <p> Select the pix_wind: <input type="range" name="P4" min="8" step="0.1" max="100" value="8.0" oninput="num8.value = this.value"> <output id="num8">8.0 </output> </p>
+                    <p> Select the luminance: <input type="range" name="P5" min="5" step="1" max="100" value="5" oninput="num9.value = this.value"> <output id="num9">5 </output> </p>
+                    <p> Select the supp_lumn: <input type="range" name="P6" min="9" step="1" max="100" value="9" oninput="num10.value = this.value"> <output id="num10">9 </output> </p>    
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <button type="submit" id="send" class="btn btn-warning" > press Enter </button>
+    </div>
+</form>
+
+    <br>
+
+    <div>
+        <table style="width:100%">
+            <tr>
+                <th> Input image (input)</th>
+                <th> {{output_type}} (Output)</th>
+            </tr>
+            <tr>
+                <td> <img src="{{uploaded_image}}" style="height: 50%; width: 50%;"> </td>
+                <td> <img src="{{transformed_img}}" style="height: 50%; width: 50%;"> </td>
+            </tr>
+        </table>
+    </div>
+
+</p> </body>
+
+</html>
