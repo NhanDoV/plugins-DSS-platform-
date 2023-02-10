@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head style="background-color: mediumseagreen">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title style="color: rgb(78, 255, 28);"> Viewing dataset </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+
+
+    <style>
+     h1 {
+       font-family: 'Helvetica Neue', sans-serif;
+       font-size: 36px;
+       font-weight: bold;
+       letter-spacing: -1px;
+       line-height: 1;
+       text-align: center;
+     }
+
+     table, th, td {
+        border: 1px solid rgba(0, 0, 0, 0.897);
+        border-collapse: collapse;
+        background-image: linear-gradient(#337cb150, #5bd4739c)
+      }
+
+      .form-div {
+        display: flex;
+        width: 800px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: radial-gradient(to_bottom,#91d64d 0%, #33ccff 99%);
+        background: #67b11c;
+        background-color: linear-gradient(#72c41f, #5c9e19);
+      }
+      
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: red;
+        opacity: 1; /* Firefox */
+        width: 100%;
+      }
+
+   </style>
+
+</head> 
+
+<body style="width: 100%; text-align: center; background-image: linear-gradient(rgba(216, 84, 84, 0.575), rgba(158, 158, 238, 0.603));">
+
+     <nav class="navbar navbar-light bg-light" style="width: 100%; background-image: linear-gradient(#031f33, #e8f7eb);">
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <form class="form-inline">
+              <a href="{{ url_for("index") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(128, 91, 214), rgb(16, 3, 61)) ;"> Home page </a>
+              <a href="{{ url_for("visualize") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(26, 209, 87), rgb(75, 32, 230));"> visualize </a> 
+              <a href="{{ url_for("review") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(145, 209, 26), rgb(230, 151, 32));"> viewing </a>
+              <a href="{{ url_for("enhanced") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(66, 26, 209), rgb(230, 32, 171));"> enhancing_database </a>
+            </form>
+          </div>
+     </nav>     
+
+    <h1 style="color:  rgb(236, 193, 193);"> Enhanced your database </h1>     
+
+    <table style="width:100%; border-collapse: collapse; background-color: rgba(150, 212, 212, 0.4)">
+        <div style="text-align: left"> Chú thích (cấp độ đánh giá) </div>
+        <tr>
+            <th style="font-weight: normal"> 0 = Không có đánh giá </th>
+            <th style="font-weight: normal"> 1 = Rất không hài lòng </th>
+            <th style="font-weight: normal"> 2 = Chưa hài lòng </th>
+        </tr>
+        <tr>
+            <th style="font-weight: normal"> 3 = Bình thường </th>
+            <th style="font-weight: normal"> 4 = Hài lòng </th>
+            <th style="font-weight: normal"> 5 = Rất hài lòng </th>
+        </tr>
+    </table>
+
+    <form action="/enhancing" method="POST" enctype="multipart/form-data">    
+        <div>
+            <table style="width:100%; height: 4em; background-color: rgba(208, 214, 66, 0.7)">
+                <tr> Điền thông tin bạn muốn bổ sung hoặc thêm vào đây (vui lòng check data để đảm bảo review bạn nhập không trùng với dữ liệu đã có sẵn) </tr>
+                <tr> <th style="width:10%"> Fill in your reviews: </th> 
+                     <th style="width:90%"> <input style="width: 100%; height: 80%;" type="text" name="text" class="form-control mr-2" placeholder ="  Input your review here. " > </th>
+                </tr>
+            </table>
+            Theo bạn thì review bạn đã nhập thuộc hạng mục nào và vui lòng đánh giá mức độ đó
+            <table style="width:100%; height: 15em; background-color: rgba(93, 192, 53, 0.6)">
+                <tr> 
+                    <th style="width:10%"> Field </th>
+                    <th style="width:80%"> chú thích </th>
+                    <th> Rating </th>
+                </tr>
+                <tr> <th> 01. Rating_BUL: </th> 
+                     <th style="font-weight: normal"> Đánh giá về công việc, ứng xử, trách nhiệm của các BUL (business unit leader) </th>
+                     <th> <input style="width:90%" type="number" name="rBUL" class="form-control mr-2" min="0" value="0" max="5"> </th> 
+                </tr>
+                <tr> <th> 02. Rating_IT: </th>
+                     <th style="font-weight: normal"> Đánh giá công việc, ứng xử, trách nhiệm. Bên cạnh đó là các vấn đề về hạ tầng mạng, thông tin và thủ tục xử lý </th>
+                     <th> <input style="width:90%" type="number" name="rIT" class="form-control mr-2" min="0" value="0" max="5"> </th> 
+                </tr>
+                <tr> <th> 03. HR </th> 
+                     <th style="font-weight: normal"> Đánh giá công việc, giao tiếp - ứng xử và trách nhiệm </th>
+                     <th> <input style="width:90%" type="number" name="rHR" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 04. PM </th> 
+                     <th style="font-weight: normal"> Đánh giá công việc, ứng xử và trách nhiệm của PM </th>
+                     <th> <input style="width:90%" type="number" name="rPM" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 05. lead </th>
+                     <th style="font-weight: normal"> Đánh giá công việc chuyên môn, ứng xử và trách nhiệm của team leader </th>
+                     <th> <input style="width:90%" type="number" name="rlead" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 06. dong_nghiep </th> 
+                     <th style="font-weight: normal"> đồng nghiệp có hỗ trợ / xích mích nhau trong công việc? </th>
+                     <th> <input style="width:90%" type="number" name="rdong_nghiep" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 07. luong_thuong </th> 
+                     <th style="font-weight: normal"> các vấn đề về tiền lương, và các khoản thưởng tết và lương tháng 13 </th>
+                     <th> <input style="width:90%" type="number" name="rluong_thuong" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 08. CSVC </th> 
+                     <th style="font-weight: normal"> không gian, cơ sở vật chất hạ tầng, máy móc trang thiết bị </th>
+                     <th> <input style="width:90%" type="number" name="rCSVC" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 09. tang_ca </th>
+                     <th style="font-weight: normal"> các chính sách hỗ trợ khi OT hợp lý chưa, hoặc các vấn đề phát sinh do OT </th> 
+                     <th> <input style="width:90%" type="number" name="rtang_ca" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 10. nghi_phep </th>
+                     <th style="font-weight: normal"> các hoạt động vui chơi văn nghệ, về các kỳ nghỉ phép, đơn xin nghỉ mát, số ngày phép </th> 
+                     <th> <input style="width:90%" type="number" name="rnghi_phep" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 11. thoi_viec </th>
+                     <th style="font-weight: normal"> lý do thôi việc / không hài lòng điểm nào </th> 
+                     <th> <input style="width:90%" type="number" name="rthoi_viec" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>                                                                
+                <tr> <th> 12. bao_hiem </th>
+                     <th style="font-weight: normal"> các đãi ngộ từ BHXH, BHYT và các nhân viên phụ trách BH ở cty </th> 
+                     <th> <input style="width:90%" type="number" name="rbao_hiem" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>                
+                <tr> <th> 13. ho_tro_#</th> 
+                     <th style="font-weight: normal"> tiền xăng cộ, xe đưa rước, mua nhà, mua xe, hỗ trợ cưới sinh, bệnh tật, etc. </th>
+                     <th> <input style="width:90%" type="number" name="rho_tro_#" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 14. cong_viec</th> 
+                     <th style="font-weight: normal"> cảm nhận về môi trường làm việc (áp lực/vui vẻ/đáng học hỏi/etc), các tasks được giao, học hỏi kiến thức mới từ dự án? </th>
+                     <th> <input style="width:90%" type="number" name="rcong_viec" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>
+                <tr> <th> 15. dao_tao</th> 
+                     <th style="font-weight: normal"> sự học hỏi từ các mentor + các khóa học, cert/ chứng chỉ, chương trình đào tạo lẫn người hướng dẫn của bạn </th>
+                     <th> <input style="width:90%" type="number" name="rdao_tao" class="form-control mr-2" min="0" value="0" max="5"> </th>
+                </tr>                                
+            </table>
+        </div>
+        <br>
+
+        <div style="text-align: center;">
+            <button type="submit" id="send" class="btn btn-warning" > press Enter </button>
+        </div>
+
+    </form>
+</body>
+
+</html>

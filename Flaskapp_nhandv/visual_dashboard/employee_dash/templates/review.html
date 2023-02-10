@@ -1,0 +1,53 @@
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+  <head style="background-color: mediumseagreen">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title style="color: rgb(78, 255, 28);"> Viewing dataset </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  </head>
+
+  <nav class="navbar navbar-light bg-light" style="width: 100%; background-image: linear-gradient(#1198f8, #584f6e);">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <form class="form-inline">
+        <a href="{{ url_for("index") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(128, 91, 214), rgb(16, 3, 61)) ;"> Home page </a>
+        <a href="{{ url_for("visualize") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(26, 209, 87), rgb(75, 32, 230));"> visualize </a> 
+        <a href="{{ url_for("review") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(145, 209, 26), rgb(230, 151, 32));"> viewing </a>
+        <a href="{{ url_for("enhanced") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(66, 26, 209), rgb(230, 32, 171));"> enhancing_database </a>
+      </form>
+    </div>
+  </nav>
+  
+  <body style="background-color: #d2e1eb">
+    <div class="block">
+        <section >
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                  <h1 class="title" style="color: rgb(228, 48, 230);">FPT review - employee Satisfaction</h1>
+                  <h2 class="subtitle" style="color: red;"> ML Web-Application</h2>
+                </div><br>                
+            </div>
+        </section>
+    </div>
+    <div class="block">
+        <div class="container has-text-centered">
+          <div style="color: red;"> Now, your dataset has {{nrow}} rows and {{ncol}} columns </div>
+          
+          <div> {{ df_view.to_html(classes="table striped", na_rep="-") | safe }} </div>
+        </div>
+    </div>
+    <footer class="footer" style="background-color: yellowgreen">
+            <div class="content has-text-centered">
+              <p>
+                <strong> NhanDoVan | 2022 </strong>.<br>
+                <a href="https://github.com/Nhan121">Github</a> | <a href="https://www.linkedin.com/in/do-nhan-39a4191a3/">Portfolio</a>.
+              </p>
+            </div>
+          </footer>
+  </body>
+</html>
+
+{% endblock %}

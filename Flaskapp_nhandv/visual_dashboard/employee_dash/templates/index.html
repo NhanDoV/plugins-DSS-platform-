@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" />
+      <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css')}}" /> -->
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        background-color: rgba(150, 212, 212, 0.4);
+        color:rgb(10, 25, 230)
+      }
+      .centered {
+        position: relative;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        color: blueviolet;
+        background-color: radial-gradient(to_bottom,#91d64d 0%, #33ccff 99%);
+      }
+
+      .header {
+        color: black;
+        background-color: radial-gradient(to_bottom,#91d64d 0%, #33ccff 99%);
+      }
+
+      ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: red;
+        opacity: 1; /* Firefox */
+      }
+
+      .button {
+          background-color:  #008CBA; /* Green-blue */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+      }
+
+      p {
+        color: #111;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        line-height: 24px;
+        margin: 0 0 24px;
+        text-justify: inter-word;
+      }
+
+      img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      }
+
+      h1 {
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: -1px;
+        line-height: 1;
+        text-align: center;
+      }
+      .column {
+        float: center;
+        width: 32%;
+      }
+
+      div{
+        background: radial-gradient(to_bottom,#4ab361 0%, #91d64d 99%);   
+      }
+
+      .notice-succes{
+        background-color: linear-gradient(#72c41f, #5c9e19);
+        border: 2px solid #467813;
+        border-radius: 5px;
+        color: #fff;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        padding: 15px 20px;
+      }
+
+      .demo {
+        color: #111;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 22px;
+        line-height: 24px;
+        margin: 0 0 24px;
+        text-justify: inter-word;
+        align-self: center;
+        background-color: linear-gradient(#72c41f, #5c9e19);
+      }
+
+      .form-div {
+        display: flex;
+        width: 800px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: radial-gradient(to_bottom,#91d64d 0%, #33ccff 99%);
+        background: #67b11c;
+        background-color: linear-gradient(#72c41f, #5c9e19);
+      }
+    </style>
+  </head>
+
+<nav class="navbar navbar-light bg-light" style="width: 96%; background-image: linear-gradient(#031f33, #15c93c);">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <form class="form-inline">
+      <a href="{{ url_for("index") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(128, 91, 214), rgb(16, 3, 61)) ;"> Home page </a>
+      <a href="{{ url_for("visualize") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(26, 209, 87), rgb(75, 32, 230));"> visualize </a> 
+      <a href="{{ url_for("review") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(145, 209, 26), rgb(230, 151, 32));"> viewing </a>
+      <a href="{{ url_for("enhanced") }}" class="button is-info is-rounded" style="background-image: linear-gradient(rgb(66, 26, 209), rgb(230, 32, 171));"> enhancing_database </a>
+    </form>
+  </div>
+</nav>
+
+  <body class="navbar navbar-dark bg-primary"  style="width: 97%; background-image: linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197))">
+    <div class="container mt-5">
+      <div class="centered">
+        <div class="text-center text-white">
+          <title>sentiment analysis app</title>
+        </div>
+        <div class="row" style="width: 100%; background-image: linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197));">
+          <div class="column" style = "float:left"> 
+            <img src="static/ftown3.png" style="width:99%; height: 100%; opacity: 0.8;"> 
+          </div>
+          <div class="column" style = "float: center"> 
+            <img src="static/fpt.png" style="width:99%; height: 100%; opacity: 0.6;"> 
+          </div>
+          <div class="column" style = "float: right"> 
+            <img src="static/emp_satis.png" style="width:99%; height: 100%; opacity: 0.3"> 
+          </div>
+        </div>
+
+        <h1 class="header" style="color: rgb(62, 29, 155); width: 98%"> 
+          <br> Employee Satisfaction (FPT) App <br>
+        </h1>
+        <h4 class="header" style="color: rgba(255, 1, 255, 1)"> AVI.FLY.Hackathon team</h4>
+        <h5 class="header"> version 1 - Authorized by Mr.Nhan </h5>
+        <p class="desc" style="color:rgb(37, 11, 184)">
+          Bài toán dựa trên việc dùng các review / comment của nhân viên (đã và đang) làm tại FSOFT trên các khía cạnh và các mức ratings, Bao gồm 15 hạng mục. <br>
+          Để biết thêm chi tiết, hãy vào các trang khác như enhanced
+        </p>
+
+        <form method="POST" onSubmit="return validate();" class="form">                          
+          <div class="form-div">
+            <input type="text" name="text" class="form-control mr-2" placeholder ="  Input your review here. " />
+            <button style="background-image: linear-gradient(to bottom, rgba(0,228,0,0.2), rgba(0,255,0,0.8));" type="submit" class="button" onclick="this.form.submit();">
+              Submit
+            </button>
+          </div>
+        </form>
+        <br />
+        <br />        
+      </div>
+
+      <p id="demo" >  
+        <div class="centered">
+            <h4 style="color: rgb(10, 25, 230);border: 10px black solid linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197)); background-image: linear-gradient(to right, rgba(244,0,121,0.4), rgba(238, 168, 238, 0.8));"> Your input was: {{ your_inp }} </h4>
+            <h5> Rating results </h5>
+          <table style="color: cyan;">
+            {% for table in tables %}
+              {{ titles [loop.index]}}
+              {{ table | safe }}
+            {% endfor %}
+          </table>
+        </div>
+      </p>
+    </div>
+  </body>
+
+  <footer>
+    <nav class="navbar navbar-dark bg-dark" style="background-color: #72c41f;">
+      <div style="border: 10px solid linear-gradient(to right, rgba(255,200,200,0), rgb(133, 173, 197)); background-image: linear-gradient(to left, rgba(0,0,0,0), rgba(255,128,128,1));">
+        <div class="column" style = "float:left"> NhanDV6 </div>  
+        <div class="column" style="float:right"> today is {{today}} </div> 
+      </div>
+    </nav>
+  </footer>
+
+</html>

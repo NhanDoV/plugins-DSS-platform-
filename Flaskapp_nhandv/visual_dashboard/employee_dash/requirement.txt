@@ -1,0 +1,4 @@
+pyvi
+nltk
+scikit-learn
+flask
